@@ -358,7 +358,136 @@ ALTER TABLE [dbo].[departments]  WITH CHECK ADD FOREIGN KEY([location_id])
 REFERENCES [dbo].[locations] ([location_id])
 ON UPDATE CASCADE
 ON DELETE CASCADE
+
 GO
+/****** Object:  ForeignKey [FK__dependent__emplo__29572725]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[dependents]  WITH CHECK ADD FOREIGN KEY([employee_id])
+REFERENCES [dbo].[employees] ([employee_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__depar__239E4DCF]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([department_id])
+REFERENCES [dbo].[departments] ([department_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__job_i__22AA2996]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([job_id])
+REFERENCES [dbo].[jobs] ([job_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__manag__24927208]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([manager_id])
+REFERENCES [dbo].[employees] ([employee_id])
+GO
+/****** Object:  ForeignKey [FK__locations__count__0EA330E9]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[locations]  WITH CHECK ADD FOREIGN KEY([country_id])
+REFERENCES [dbo].[countries] ([country_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+
+select *from [dbo].[dependents]
+
+/* first query*/
+select CONCAT( last_name,',',job_id ) 'emlpoyee and title' from employees
+
+/* 2nd query*/
+select  last_name,salary from employees where salary>12000
+
+/* 3rd query*/
+select last_name,salary from employees where salary  not between 5000 and 12000
+
+/* 4th query*/
+select last_name, hire_date from employees where hire_date like '1994%'
+
+/* 5th query*/
+select  last_name,salary from employees 
+order by salary desc
+
+/* 6th query*/
+select last_name from employees 
+where last_name like'__a%' 
+
+/* 7th query*/
+select last_name from employees 
+where last_name like'%a%' and  last_name like'%e%'
+
+/* 8th query*/
+select last_name,job_title, salary from employees inner join	jobs 
+on employees.job_id=jobs.job_id
+where job_title='Sales Representative' or job_title='Stock clerk'
+and salary not in(2500,3500,7000) 
+
+/* 9th query*/
+select employee_id,last_name,salary, salary*0.155 'new salary' from employees
+/****** Object:  ForeignKey [FK__dependent__emplo__29572725]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[dependents]  WITH CHECK ADD FOREIGN KEY([employee_id])
+REFERENCES [dbo].[employees] ([employee_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__depar__239E4DCF]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([department_id])
+REFERENCES [dbo].[departments] ([department_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__job_i__22AA2996]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([job_id])
+REFERENCES [dbo].[jobs] ([job_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+/****** Object:  ForeignKey [FK__employees__manag__24927208]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD FOREIGN KEY([manager_id])
+REFERENCES [dbo].[employees] ([employee_id])
+GO
+/****** Object:  ForeignKey [FK__locations__count__0EA330E9]    Script Date: 02/28/2020 12:21:15 ******/
+ALTER TABLE [dbo].[locations]  WITH CHECK ADD FOREIGN KEY([country_id])
+REFERENCES [dbo].[countries] ([country_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+
+select *from [dbo].[dependents]
+
+/* first query*/
+select CONCAT( last_name,',',job_id ) 'emlpoyee and title' from employees
+
+/* 2nd query*/
+select  last_name,salary from employees where salary>12000
+
+/* 3rd query*/
+select last_name,salary from employees where salary  not between 5000 and 12000
+
+/* 4th query*/
+select last_name, hire_date from employees where hire_date like '1994%'
+
+/* 5th query*/
+select  last_name,salary from employees 
+order by salary desc
+
+/* 6th query*/
+select last_name from employees 
+where last_name like'__a%' 
+
+/* 7th query*/
+select last_name from employees 
+where last_name like'%a%' and  last_name like'%e%'
+
+/* 8th query*/
+select last_name,job_title, salary from employees inner join	jobs 
+on employees.job_id=jobs.job_id
+where job_title='Sales Representative' or job_title='Stock clerk'
+and salary not in(2500,3500,7000) 
+
+/* 9th query*/
+select employee_id,last_name,salary, salary*0.155 'new salary' from employees
 /****** Object:  ForeignKey [FK__dependent__emplo__29572725]    Script Date: 02/28/2020 12:21:15 ******/
 ALTER TABLE [dbo].[dependents]  WITH CHECK ADD FOREIGN KEY([employee_id])
 REFERENCES [dbo].[employees] ([employee_id])
